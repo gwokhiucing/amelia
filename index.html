@@ -7,12 +7,99 @@
     <title>Document</title>
 </head>
 <style>
-    .a{
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        height: 100%;
+       
+    }
+    .pic{
+        background: url(./bg.png) no-repeat;
+        background-size: 100%;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .sun{
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* background-size: 25%; */
+    }
+    .sun .sunbg{
+        animation: loading 5s linear infinite;
+        width: 100%;
+    }
+    .sun .face {
+        position: absolute;
+        top: 50%; 
+        transform: translateX(-50%) translateY(-50%);
+        left: 50%;
+
+    }
+    .number{
+        position: absolute;
+        left: 39%;
+        top: 34%;
+        animation: numberChange 5s linear infinite;
+    }
+    .number img{
         width: 100%;
         height: 100%;
     }
+    
+      /*通过@keyframes规则,能够创建动画 , que 定义动画的名称 可自己定义*/
+    @keyframes loading {
+        /*以百分比来规定改变发生的时间 也可以通过"from"和"to",等价于0% 和 100%*/
+        0% {
+            /*rotate(2D旋转) scale(放大或者缩小) translate(移动) skew(翻转)*/
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes numberChange {
+        /*以百分比来规定改变发生的时间 也可以通过"from"和"to",等价于0% 和 100%*/
+        0% {
+            /*rotate(2D旋转) scale(放大或者缩小) translate(移动) skew(翻转)*/
+            transform: rotate(0deg);
+        }
+        25%{
+            transform: rotate(10deg) ;
+        }
+        50% {
+            transform: rotate(0deg);
+        }
+        75%{
+            transform: rotate(-10deg) ;
+        }
+    }
 </style>
 <body>
-    <img src="1.jpeg" alt="" class="a">
+    <div class="pic">
+        <div class="sun">
+            <img class = "sunbg" src="./1_03.png" alt="">
+            <img class="face" src="./face.png"></span>
+        </div>
+        <div class="number">
+            <img src="./1_11.png" alt="">
+        </div>
+
+    </div>
+   
 </body>
+<script src="./jquery.js"></script>
+<script>
+    var screenWidth =  screen.width;
+    var sun = $(".sun").width(screenWidth*0.22);
+    var  face = $(".face").width($(".sun").width()*0.5);
+    var number = $(".number").width(screenWidth*0.12);
+
+    setInterval(function(){
+        console.log("happy birthday")
+    },3000)
+</script>
 </html>
